@@ -1,7 +1,7 @@
 // CMPM 121 Smelly Code Activity
 
 // This variable keeps track of the counter
-let c = 0;
+let counter = 0;
 
 // These constants are for button IDs and heading text
 const a = "increment", b = "counter", h = "CMPM 121 Project";
@@ -31,37 +31,22 @@ function setup() {
   // Add click event to the increment button
   bI.addEventListener("click", () => {
     // Increase the counter by 1
-    c++;
-    // Update the counter display
-    ctr.innerHTML = `${c}`;
-    // Update the document title
-    document.title = "Clicked " + c;
-    // Change the background color based on even/odd count
-    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+    counter++;
+    updateUI();
   });
 
   // Add click event to the decrement button
   bD.addEventListener("click", () => {
     // Decrease the counter by 1
-    c--;
-    // Update the counter display
-    ctr.innerHTML = `${c}`;
-    // Update the document title
-    document.title = "Clicked " + c;
-    // Change the background color based on even/odd count
-    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+    counter--;
+    updateUI();
   });
 
   // Add click event to the reset button
   bR.addEventListener("click", () => {
     // Reset the counter to 0
-    c = 0;
-    // Update the counter display
-    ctr.innerHTML = `${c}`;
-    // Update the document title
-    document.title = "Clicked " + c;
-    // Change the background color based on even/odd count
-    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+    counter = 0;
+    updateUI();
   });
 }
 
@@ -71,3 +56,13 @@ function start() {
 }
 // Start the counter app
 start();
+
+//Helper function for repetitive logic
+function updateUI(ctr: HTMLElement = document.getElementById(b)!) {
+  // Update the counter display
+  ctr.innerHTML = `${counter}`;
+  // Update the document title
+  document.title = "Clicked " + counter;
+  // Change the background color based on even/odd count
+  document.body.style.backgroundColor = counter % 2 ? "pink" : "lightblue";
+}
